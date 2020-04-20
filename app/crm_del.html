@@ -27,6 +27,12 @@
 	<link rel="stylesheet" type="text/css" href="./assets/css/chartist.css" media="all">
 	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/widget.css">
+    <!-- 19-04-20 -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/handsontable/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/handsontable/icofont.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/handsontable/handsontable.full.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/pages.css">
+    <!-- 19-04-20 -->
 
 </head>
 <body themebg-pattern="theme1">
@@ -141,10 +147,10 @@
     <div class="row align-items-end">
         <div class="col-lg-8">
             <div class="page-header-title">
-                <i class="feather icon-monitor bg-c-blue"></i>
+                <i class="feather icon-users bg-c-blue"></i>
                 <div class="d-inline">
-                    <h5>WebCalc</h5>
-                    <span>Saiba a quantidade de insumos necessários para preparar o concreto.</span>
+                    <h5>Controle de cadastros</h5>
+                    <span>Carteira de clientes cadastrados.</span>
                 </div>
             </div>
         </div>
@@ -154,7 +160,7 @@
                     <li class="breadcrumb-item">
                         <a href="index.html"><i class="feather icon-home"></i></a>
                     </li>
-                    <li class="breadcrumb-item"><a href="calc-conc.html">WebCalc</a> </li>
+                    <li class="breadcrumb-item"><a href="crm_add.html">MyCustomers</a> </li>
                 </ul>
             </div>
         </div>
@@ -171,46 +177,59 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h5>Cálculo de insumos para concreto magro</h5>
+                                <h5>Deletar cadastro</h5>
                             </div>
                             <div class="card-block">
-                                <h4 class="sub-title">Insira o volume de concreto que deseja:</h4>
+                                <h4 class="sub-title">Insira os dados do cliente:</h4>
                                 <!--form-->
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Volume (m³):</label>
-                                        <div class="col-sm-6">
-                                            <input id="volumeConc" type="text" class="form-control form-control-round" placeholder="Insira o volume usando ponto. Ex.: 0.25 m³">
-                                        </div>
-                                    </div>                              
-                                    <div class="form-group row" style="margin-left: 45% !important;">
-                                        <div class="text-center m-t-20">
-                                            <button class="btn btn-primary" onclick="calcConcMagr()">Calcular</button>
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">CPF:</label>
+                                    <div class="col-sm-6">
+                                        <input id="cpf" type="text" class="form-control form-control-round" placeholder='Nº de CPF do cliente. Ex.: 123456789'>
                                     </div>
+                                </div>            
+                                <div class="form-group row" style="margin-left: 45% !important;">
+                                    <div class="text-center m-t-20">
+                                        <button id="btnDeletar" class="btn btn-primary" onclick="deleteCRM()">Deletar</button>
+                                    </div>
+                                </div>
                                 <!--/form-->
                                 <div id="resDiv" style="display: none;"></div>
-                                </div>
                             </div>
                         </div>
+
+
+                        <!-- TABLE OF DATA START-->
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Clientes cadastrados</h5>
+                            </div>
+                            <div class="card-block">
+                                <div class="table-responsive scroll-container">
+                                    <div id="paginating" class="hot handsontable htRowHeaders htColumnHeaders"></div>
+                                </div>
+                                <nav aria-label="Page navigation" class="handson-pagination">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#1">1</a></li>
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- TABLE OF DATA END -->
                     </div>
-
-
-
-
-
-
                 </div>
-
-
 
             </div>
 
         </div>
+
     </div>
 </div>
 </div>
 </div>
-<!-- CONTEÚDO WRAPPER -->
+</div>
+
 </div>
 
 <div id="styleSelector">
@@ -220,8 +239,8 @@
 </div>
 <footer>
     <div style="text-align:right;font-size:12px;position:relative;margin:-30px 20px 12px 0px;">
-     <span>&copy; 2019-2020 | developed by <a href="mailto:roberto@pedroga.com">Roberto C. S. Pedroga</a></span>
- </div>
+       <span>&copy; 2019-2020 | developed by <a href="mailto:roberto@pedroga.com">Roberto C. S. Pedroga</a></span>
+   </div>
 </footer>
 </div>
 </div>
@@ -291,6 +310,13 @@
 <script type="text/javascript" src="./assets/js/custom-dashboard.min.js.download"></script>
 <script type="text/javascript" src="./assets/js/script.min.js.download"></script>
 <script type="text/javascript" src="./assets/js/myscript.js"></script>
+<!-- 19-04-20 -->
+<script type="text/javascript" src="./assets/js/handson-table/handsontable.full.js"></script>
+<script type="text/javascript" src="./assets/js/handson-table/data-operation-crm.js"></script>
+<script type="text/javascript" src="./assets/js/handson-table/modernizr.js.download"></script>
+<script type="text/javascript" src="./assets/js/handson-table/css-scrollbars.js.download"></script>
+<script type="text/javascript" src="./assets/js/handson-table/jquery.mCustomScrollbar.concat.min.js.download"></script>
+<!-- 19-04-20 -->
 <!-- <script type="text/javascript" src="./assets/js/rocket-loader.min.js"></script>
 	<script type="text/javascript" src="./assets/js/email-decode.min.js"></script> -->
 	<!-- <script type="text/javascript" async="" src="./assets/js/js"></script> -->
@@ -304,6 +330,6 @@
       gtag('config', 'G-678WWR7NWF');
   </script>
 
-<div class="flotTip" style="position: absolute; background: rgb(255, 255, 255); z-index: 1040; padding: 0.4em 0.6em; border-radius: 0.5em; font-size: 0.8em; border: 1px solid rgb(17, 17, 17); white-space: nowrap; left: 539px; top: 1144.41px; display: none;"></div>
+  <div class="flotTip" style="position: absolute; background: rgb(255, 255, 255); z-index: 1040; padding: 0.4em 0.6em; border-radius: 0.5em; font-size: 0.8em; border: 1px solid rgb(17, 17, 17); white-space: nowrap; left: 539px; top: 1144.41px; display: none;"></div>
 </body>
 </html>
