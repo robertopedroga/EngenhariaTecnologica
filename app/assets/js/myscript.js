@@ -15,10 +15,38 @@ function getName() {
   document.getElementById("usernameJS").innerHTML = txt;
 
   //
-  for(var i=1; i<(JSON.parse(window.localStorage.getItem("examDataTable")).length / 10); i++){
-    $(".pagination").append("<li class='page-item'><a class='page-link' href='#"+(i+1)+"'>"+(i+1)+"</a></li>");
-    console.log(i);
+  var examDataTable = JSON.parse(window.localStorage.getItem("examDataTable"));
+  var purchaseDataTable = JSON.parse(window.localStorage.getItem("purchaseDataTable"));
+  var crmDataTable = JSON.parse(window.localStorage.getItem("crmDataTable"));
+  //console.log(window.location.pathname);
+
+  if(window.location.pathname == "/engenhariatecnologica/app/exam_result.html" || window.location.pathname == "/engenhariatecnologica/app/exam_delete.html"){
+    if(examDataTable != null){
+      for(var i=1; i<(JSON.parse(window.localStorage.getItem("examDataTable")).length / 10); i++){
+        $(".pagination").append("<li class='page-item'><a class='page-link' href='#"+(i+1)+"'>"+(i+1)+"</a></li>");
+        //console.log(i);
+      }
+    }
   }
+
+  if(window.location.pathname == "/engenhariatecnologica/app/compras_add.html" || window.location.pathname == "/engenhariatecnologica/app/compras_del.html"){
+    if(purchaseDataTable != null){
+      for(var i=1; i<(JSON.parse(window.localStorage.getItem("purchaseDataTable")).length / 10); i++){
+        $(".pagination").append("<li class='page-item'><a class='page-link' href='#"+(i+1)+"'>"+(i+1)+"</a></li>");
+        //console.log(i);
+      }
+    }
+  }
+
+  if(window.location.pathname == "/engenhariatecnologica/app/crm_add.html" || window.location.pathname == "/engenhariatecnologica/app/crm_del.html"){
+    if(crmDataTable != null){
+      for(var i=1; i<(JSON.parse(window.localStorage.getItem("crmDataTable")).length / 10); i++){
+        $(".pagination").append("<li class='page-item'><a class='page-link' href='#"+(i+1)+"'>"+(i+1)+"</a></li>");
+        //console.log(i);
+      }
+    }
+  }
+
 }
 
 function quitSession(){
